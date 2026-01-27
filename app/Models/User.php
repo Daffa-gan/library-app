@@ -24,7 +24,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    // IMPORTANT: Ini yang bikin Laravel bisa authenticate
     public function getAuthIdentifierName()
     {
         return 'id';
@@ -40,20 +39,8 @@ class User extends Authenticatable
         return $this->password;
     }
 
-    // Relasi ke Anggota
     public function anggota()
     {
         return $this->belongsTo(Anggota::class, 'id_anggota', 'id_anggota');
-    }
-
-    // Helper method cek role
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
-    public function isAnggota()
-    {
-        return $this->role === 'anggota';
     }
 }

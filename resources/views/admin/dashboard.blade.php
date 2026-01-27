@@ -1,15 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'Dashboard Admin')
 
 @section('content')
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Perpustakaan - Admin</a>
-        <div class="d-flex">
-            <span class="navbar-text text-white me-3">
-                {{ Auth::user()->username }}
-            </span>
+        <a class="navbar-brand" href="#">Perpustakaan Admin</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.buku') }}">Kelola Buku</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.transaksi') }}">Transaksi</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('admin.anggota') }}">Kelola Anggota</a></li>
+            </ul>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
@@ -19,34 +23,30 @@
 </nav>
 
 <div class="container mt-4">
-    <h2>Dashboard Admin</h2>
-    <p>Selamat datang, Admin!</p>
-    
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <div class="card text-white bg-primary mb-3">
+    <h3 class="mb-4">Dashboard Admin</h3>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-primary">
                 <div class="card-body">
-                    <h5 class="card-title">Kelola Buku</h5>
-                    <p class="card-text">CRUD data buku perpustakaan</p>
-                    <a href="#" class="btn btn-light">Kelola</a>
+                    <h5>Total Buku</h5>
+                    <h2>{{ $totalBuku }}</h2>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-success mb-3">
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-success">
                 <div class="card-body">
-                    <h5 class="card-title">Transaksi</h5>
-                    <p class="card-text">Histori peminjaman buku</p>
-                    <a href="#" class="btn btn-light">Lihat</a>
+                    <h5>Total Anggota</h5>
+                    <h2>{{ $totalAnggota }}</h2>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card text-white bg-warning mb-3">
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-info">
                 <div class="card-body">
-                    <h5 class="card-title">Kelola Anggota</h5>
-                    <p class="card-text">CRUD data anggota</p>
-                    <a href="#" class="btn btn-light">Kelola</a>
+                    <h5>Total Transaksi</h5>
+                    <h2>{{ $totalTransaksi }}</h2>
                 </div>
             </div>
         </div>
