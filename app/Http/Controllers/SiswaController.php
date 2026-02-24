@@ -10,7 +10,6 @@ use Carbon\Carbon;
 
 class SiswaController extends Controller
 {
-    // Dashboard Siswa
     public function dashboard()
     {
         $user = Auth::user();
@@ -25,14 +24,12 @@ class SiswaController extends Controller
         return view('siswa.dashboard', compact('anggota', 'totalPinjam', 'totalRiwayat'));
     }
 
-    // Peminjaman Buku
     public function peminjaman()
     {
         $user = Auth::user();
         $anggota = $user->anggota;
         $buku = Buku::all();
         
-        // Buku yang sedang dipinjam siswa ini
         $sedangDipinjam = Transaksi::with('buku')
                                    ->where('id_anggota', $anggota->id_anggota)
                                    ->whereNull('tanggal_kembali')
@@ -50,7 +47,6 @@ class SiswaController extends Controller
             'id_buku' => 'required|exists:buku,id_buku',
         ]);
 
-        // Cek apakah buku sedang dipinjam oleh siswa ini
         $sudahPinjam = Transaksi::where('id_anggota', $anggota->id_anggota)
                                 ->where('id_buku', $request->id_buku)
                                 ->whereNull('tanggal_kembali')
@@ -70,19 +66,16 @@ class SiswaController extends Controller
         return back()->with('success', 'Buku berhasil dipinjam');
     }
 
-    // Pengembalian Buku
     public function pengembalian()
     {
         $user = Auth::user();
         $anggota = $user->anggota;
         
-        // Buku yang sedang dipinjam
         $sedangDipinjam = Transaksi::with('buku')
                                    ->where('id_anggota', $anggota->id_anggota)
                                    ->whereNull('tanggal_kembali')
                                    ->get();
         
-        // Riwayat peminjaman
         $riwayat = Transaksi::with('buku')
                             ->where('id_anggota', $anggota->id_anggota)
                             ->whereNotNull('tanggal_kembali')

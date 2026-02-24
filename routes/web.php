@@ -25,42 +25,30 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    
+    Route::get('/buku', [AdminController::class, 'buku'])->name('buku');
+    Route::post('/buku', [AdminController::class, 'bukuStore'])->name('buku.store');
+    Route::put('/buku/{id}', [AdminController::class, 'bukuUpdate'])->name('buku.update');
+    Route::delete('/buku/{id}', [AdminController::class, 'bukuDestroy'])->name('buku.destroy');
+    
+    Route::get('/transaksi', [AdminController::class, 'transaksi'])->name('transaksi');
+    Route::post('/transaksi', [AdminController::class, 'transaksiStore'])->name('transaksi.store');
+    Route::put('/transaksi/{id}', [AdminController::class, 'transaksiUpdate'])->name('transaksi.update');
+    Route::delete('/transaksi/{id}', [AdminController::class, 'transaksiDestroy'])->name('transaksi.destroy');
+    
+    Route::get('/anggota', [AdminController::class, 'anggota'])->name('anggota');
+    Route::post('/anggota', [AdminController::class, 'anggotaStore'])->name('anggota.store');
+    Route::put('/anggota/{id}', [AdminController::class, 'anggotaUpdate'])->name('anggota.update');
+    Route::delete('/anggota/{id}', [AdminController::class, 'anggotaDestroy'])->name('anggota.destroy');
 });
 
 Route::middleware(['auth', 'role:anggota'])->prefix('siswa')->name('siswa.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('siswa.dashboard');
-    })->name('dashboard');
-});
-
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('dashboard');
     
-    Route::get('/buku', [AdminController::class, 'buku'])->name('admin.buku');
-    Route::post('/buku', [AdminController::class, 'bukuStore'])->name('admin.buku.store');
-    Route::put('/buku/{id}', [AdminController::class, 'bukuUpdate'])->name('admin.buku.update');
-    Route::delete('/buku/{id}', [AdminController::class, 'bukuDestroy'])->name('admin.buku.destroy');
+    Route::get('/peminjaman', [SiswaController::class, 'peminjaman'])->name('peminjaman');
+    Route::post('/peminjaman', [SiswaController::class, 'peminjamanStore'])->name('peminjaman.store');
     
-    Route::get('/transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
-    Route::post('/transaksi', [AdminController::class, 'transaksiStore'])->name('admin.transaksi.store');
-    Route::put('/transaksi/{id}', [AdminController::class, 'transaksiUpdate'])->name('admin.transaksi.update');
-    Route::delete('/transaksi/{id}', [AdminController::class, 'transaksiDestroy'])->name('admin.transaksi.destroy');
-    
-    Route::get('/anggota', [AdminController::class, 'anggota'])->name('admin.anggota');
-    Route::post('/anggota', [AdminController::class, 'anggotaStore'])->name('admin.anggota.store');
-    Route::put('/anggota/{id}', [AdminController::class, 'anggotaUpdate'])->name('admin.anggota.update');
-    Route::delete('/anggota/{id}', [AdminController::class, 'anggotaDestroy'])->name('admin.anggota.destroy');
-});
-
-Route::middleware(['auth', 'role:anggota'])->prefix('siswa')->group(function () {
-    Route::get('/dashboard', [SiswaController::class, 'dashboard'])->name('siswa.dashboard');
-    
-    Route::get('/peminjaman', [SiswaController::class, 'peminjaman'])->name('siswa.peminjaman');
-    Route::post('/peminjaman', [SiswaController::class, 'peminjamanStore'])->name('siswa.peminjaman.store');
-    
-    Route::get('/pengembalian', [SiswaController::class, 'pengembalian'])->name('siswa.pengembalian');
-    Route::post('/pengembalian/{id}', [SiswaController::class, 'pengembalianStore'])->name('siswa.pengembalian.store');
+    Route::get('/pengembalian', [SiswaController::class, 'pengembalian'])->name('pengembalian');
+    Route::post('/pengembalian/{id}', [SiswaController::class, 'pengembalianStore'])->name('pengembalian.store');
 });

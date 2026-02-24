@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    // Dashboard Admin
     public function dashboard()
     {
         $totalBuku = Buku::count();
@@ -60,7 +59,6 @@ class AdminController extends Controller
         return back()->with('success', 'Buku berhasil dihapus');
     }
 
-    // === TRANSAKSI ===
     public function transaksi()
     {
         $transaksi = Transaksi::with(['buku', 'anggota'])->orderBy('created_at', 'desc')->get();
@@ -81,7 +79,7 @@ class AdminController extends Controller
             'id_buku' => $request->id_buku,
             'id_anggota' => $request->id_anggota,
             'tanggal_pinjam' => $request->tanggal_pinjam,
-            'tanggal_kembali' => null, // Belum dikembalikan
+            'tanggal_kembali' => null,
         ]);
 
         return back()->with('success', 'Transaksi peminjaman berhasil ditambahkan');
@@ -108,7 +106,6 @@ class AdminController extends Controller
         return back()->with('success', 'Transaksi berhasil dihapus');
     }
 
-    // === KELOLA ANGGOTA ===
     public function anggota()
     {
         $anggota = Anggota::with('user')->get();

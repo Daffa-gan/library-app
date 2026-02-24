@@ -73,7 +73,6 @@
         </div>
     </div>
 
-    <!-- Tabel Transaksi -->
     <table class="table table-bordered">
         <thead class="table-primary">
             <tr>
@@ -125,7 +124,6 @@
                 </td>
             </tr>
 
-            <!-- Modal Pengembalian -->
             @if(!$t->tanggal_kembali)
             <div class="modal fade" id="kembali{{ $t->id_transaksi }}">
                 <div class="modal-dialog">

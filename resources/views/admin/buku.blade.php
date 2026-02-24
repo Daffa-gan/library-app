@@ -3,7 +3,6 @@
 @section('title', 'Kelola Buku')
 
 @section('content')
-<!-- Navbar (copy dari dashboard) -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Perpustakaan Admin</a>
@@ -29,7 +28,6 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <!-- Form Tambah Buku -->
     <div class="card mb-4">
         <div class="card-body">
             <h5>Tambah Buku Baru</h5>
@@ -56,7 +54,6 @@
         </div>
     </div>
 
-    <!-- Tabel Buku -->
     <table class="table table-bordered">
         <thead class="table-primary">
             <tr>

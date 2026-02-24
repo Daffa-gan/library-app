@@ -15,7 +15,6 @@ return Application::configure(basePath: dirname(__DIR__))
         'role' => \App\Http\Middleware\RoleMiddleware::class,
     ]);
     
-    // FIX: Guest redirect ke login, bukan /home
     $middleware->redirectGuestsTo('/login');
 })
     ->withExceptions(function (Exceptions $exceptions) {

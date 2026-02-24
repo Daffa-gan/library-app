@@ -3,7 +3,6 @@
 @section('title', 'Dashboard Siswa')
 
 @section('content')
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Perpustakaan Siswa</a>

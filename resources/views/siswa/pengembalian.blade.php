@@ -3,7 +3,6 @@
 @section('title', 'Pengembalian Buku')
 
 @section('content')
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Perpustakaan Siswa</a>
@@ -31,7 +30,6 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <!-- Buku yang sedang dipinjam -->
     <h5 class="mb-3">Buku yang Sedang Dipinjam</h5>
     @if($sedangDipinjam->count() > 0)
     <table class="table table-bordered">
@@ -63,7 +61,6 @@
     <div class="alert alert-info">Anda tidak sedang meminjam buku</div>
     @endif
 
-    <!-- Riwayat Peminjaman -->
     <h5 class="mb-3 mt-4">Riwayat Peminjaman</h5>
     @if($riwayat->count() > 0)
     <table class="table table-bordered">

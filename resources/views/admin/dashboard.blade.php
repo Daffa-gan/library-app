@@ -3,7 +3,6 @@
 @section('title', 'Dashboard Admin')
 
 @section('content')
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Perpustakaan Admin</a>

@@ -3,7 +3,6 @@
 @section('title', 'Peminjaman Buku')
 
 @section('content')
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Perpustakaan Siswa</a>
@@ -35,7 +34,6 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    <!-- Buku yang sedang dipinjam -->
     @if($sedangDipinjam->count() > 0)
     <div class="alert alert-warning">
         <strong>Buku yang sedang Anda pinjam:</strong>
@@ -47,7 +45,6 @@
     </div>
     @endif
 
-    <!-- Daftar Buku Tersedia -->
     <h5 class="mb-3">Daftar Buku Tersedia</h5>
     <div class="row">
         @forelse($buku as $b)

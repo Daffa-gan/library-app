@@ -3,7 +3,6 @@
 @section('title', 'Kelola Anggota')
 
 @section('content')
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Perpustakaan Admin</a>
@@ -80,7 +79,6 @@
         </div>
     </div>
 
-    <!-- Tabel Anggota -->
     <table class="table table-bordered">
         <thead class="table-primary">
             <tr>
@@ -112,7 +110,6 @@
                 </td>
             </tr>
 
-            <!-- Modal Edit -->
             <div class="modal fade" id="edit{{ $a->id_anggota }}">
                 <div class="modal-dialog">
                     <div class="modal-content">
