@@ -18,8 +18,8 @@ class Transaksi extends Model
     ];
 
     protected $casts = [
-        'tanggal_pinjam' => 'date',
-        'tanggal_kembali' => 'date',
+        'tanggal_pinjam' => 'datetime',
+        'tanggal_kembali' => 'datetime',
     ];
 
     public function anggota(){

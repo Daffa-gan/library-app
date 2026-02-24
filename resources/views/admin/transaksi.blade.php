@@ -3,7 +3,6 @@
 @section('title', 'Transaksi')
 
 @section('content')
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Perpustakaan Admin</a>
@@ -39,7 +38,6 @@
         </div>
     @endif
 
-    <!-- Form Tambah Transaksi -->
     <div class="card mb-4">
         <div class="card-body">
             <h5>Tambah Transaksi Peminjaman</h5>
